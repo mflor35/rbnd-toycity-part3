@@ -31,6 +31,9 @@ class Product
     return @stock > 0
   end
 
+  def set_stock(new_stock)
+    @stock = new_stock
+  end
   def self.in_stock
     in_stock_list = []
     @@products.each do |product|
