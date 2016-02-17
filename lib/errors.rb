@@ -21,3 +21,11 @@ class DuplicateCustomerError < StandardError
     puts @msg
   end
 end
+
+class DoesNotExistCustomerError < StandardError
+  attr_reader :msg
+  def initialize(customer_name)
+    @msg = "DoesNotExistCustomerError: '#{customer_name}' does not exists."
+    puts @msg
+  end
+end

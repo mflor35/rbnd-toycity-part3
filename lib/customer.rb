@@ -4,6 +4,15 @@ class Customer
 
   public
 
+  def self.find_by_name(customer_name)
+    @@customers.each do |customer|
+      if customer_name == customer.name
+        return customer
+      end
+    end
+    DoesNotExistCustomerError.new(customer_name)
+  end
+
   def initialize(options={})
     @name = options[:name]
     add_to_customers
