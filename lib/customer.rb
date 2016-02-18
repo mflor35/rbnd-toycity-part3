@@ -27,8 +27,13 @@ class Customer
   end
 
   def purchase(product)
-    Transaction.new(self,product)
+    if(product.in_stock?)
+      Transaction.new(self,product)
+    else
+      OutOfStockError.new(product.title)
+    end
   end
+  
   private
 
   def add_to_customers

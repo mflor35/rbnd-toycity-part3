@@ -29,3 +29,11 @@ class DoesNotExistCustomerError < StandardError
     puts @msg
   end
 end
+
+class OutOfStockError < StandardError
+  attr_reader :msg
+  def initialize(product_title)
+    @msg = "OutOfStockError: '#{product_title}' is out of stock."
+    puts @msg
+  end
+end
