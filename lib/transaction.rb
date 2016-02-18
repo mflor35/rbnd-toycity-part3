@@ -4,6 +4,7 @@ class Transaction
   def initialize(init_customer,init_product)
     @customer = init_customer
     @product = init_product
+    add_to_transaction
     @id = @@transactions.count
     decrease_product_stock
   end
@@ -20,6 +21,17 @@ class Transaction
     @id
   end
 
+  def self.all
+    @@transactions
+  end
+
+  def self.find(transaction_id)
+    @@transactions.each do |transaction|
+      if transaction.id == transaction_id
+        return transaction
+      end
+    end
+  end
   private
   def add_to_transaction
     @@transactions << self
