@@ -1,0 +1,17 @@
+
+How long did you spend working on this project?
+I spent around 6 to 7 hours in this project
+
+What was the most rewarding challenge you conquered?
+The most rewarding challenge was to get the error classes to display the error
+message. I had to do a lot of googleling and read a couple of tutorial to understand
+what was it that I wanted to do.
+
+What two additional features did you build? Why?
+1.- I added a way to identify a customer by id instead of name, since they might be
+customer with the same name.
+2.- I also added the ability to write a report to a file of all the transactions.
+Just in case the boss wanted a print copy of them.
+
+Where do you still have room to grow?
+I feel I can do better on generating the errors and doing exceptions.
