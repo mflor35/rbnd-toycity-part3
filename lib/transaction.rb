@@ -32,7 +32,23 @@ class Transaction
       end
     end
   end
+
+  def self.export_report(filename)
+    report = File.new(filename,"w+")
+    header = "|%2s|%50s|%20s|\n"%["ID","Product Purchased","Customer Name"]
+    dashes = "-"*(header.length - 1) + "\n"
+    report.write(dashes)
+    report.write(header)
+    report.write(dashes)
+    @@transactions.each do |transaction|
+      report.write("|%2s|%50s|%20s|\n"%["#{transaction.id}","#{transaction.product.title}","#{transaction.customer.name}"])
+    end
+    report.write(dashes)
+    report.close
+  end
+
   private
+
   def add_to_transaction
     @@transactions << self
   end
@@ -40,4 +56,6 @@ class Transaction
   def decrease_product_stock
     @product.set_stock(@product.stock - 1)
   end
+
+
 end

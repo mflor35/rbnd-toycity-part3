@@ -1,0 +1,6 @@
+----------------------------------------------------------------------------
+|ID|                                 Product Purchased|       Customer Name|
+----------------------------------------------------------------------------
+| 1|                  Nano Block Empire State Building|      Walter Latimer|
+| 2|                  Nano Block Empire State Building|      Walter Latimer|
+----------------------------------------------------------------------------

@@ -1,8 +1,14 @@
 class Customer
   @@customers = Array.new
-  attr_reader :name
+  attr_reader :name, :id
 
   public
+
+  def initialize(options={})
+    @name = options[:name]
+    add_to_customers
+    @id = @@customers.count
+  end
 
   def self.find_by_name(customer_name)
     @@customers.each do |customer|
@@ -13,9 +19,16 @@ class Customer
     DoesNotExistCustomerError.new(customer_name)
   end
 
-  def initialize(options={})
-    @name = options[:name]
-    add_to_customers
+  def self.find_by_id(customer_id)
+    @@customers.each do |customer|
+      if customer.id == customer_id
+        return customer
+      end
+    end
+  end
+
+  def id
+    @id
   end
 
   def self.all
@@ -33,7 +46,7 @@ class Customer
       OutOfStockError.new(product.title)
     end
   end
-  
+
   private
 
   def add_to_customers
