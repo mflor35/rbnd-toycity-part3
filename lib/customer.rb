@@ -40,21 +40,23 @@ class Customer
   end
 
   def purchase(product)
-    if(product.in_stock?)
+    begin
+      raise OutOfStockError.new(product.title) unless product.in_stock?
       Transaction.new(self,product)
-    else
-      OutOfStockError.new(product.title)
+    rescue Exception => msg
+      puts msg
     end
   end
 
   private
 
   def add_to_customers
-    if !contains?
-    @@customers << self
-    else
-      DuplicateCustomerError.new(@name)
-    end
+    begin
+      raise DuplicateCustomerError.new(@name) unless !contains?
+      @@customers << self
+    rescue Exception => msg
+      puts msg
+  end
   end
 
   def contains?

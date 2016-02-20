@@ -1,7 +1,7 @@
 class Product
   attr_reader :title, :price, :stock
-
   @@products = Array.new
+
   public
 
   def initialize(options = {})
@@ -15,18 +15,6 @@ class Product
     @@products
   end
 
-  def price
-    @price
-  end
-
-  def stock
-    @stock
-  end
-
-  def title
-    @title
-  end
-
   def in_stock?
     return @stock > 0
   end
@@ -34,6 +22,7 @@ class Product
   def set_stock(new_stock)
     @stock = new_stock
   end
+
   def self.in_stock
     in_stock_list = []
     @@products.each do |product|
@@ -45,23 +34,29 @@ class Product
   end
 
   def self.find_by_title(product_title)
-    @@products.each do |product|
-      if product_title == product.title
-        return product
+    begin
+      @@products.each do |product|
+        if product_title == product.title
+          return product
+        end
       end
+      raise DoesNotExistProductError.new(product_title)
+    rescue Exception => msg
+      puts msg
     end
-    DoesNotExistProductError.new(product_title)
   end
+
   private
-
+#---------------------------
   def add_to_products
-    if !contains?
+    begin
+      raise DuplicateProductError.new(@title) unless !contains?
       @@products << self
-    else
-      DuplicateProductError.new(@title)
-    end
+    rescue Exception => msg
+      puts msg
   end
-
+end
+#---------------------------
   def contains?
     @@products.each do |product|
       if @title == product.title
