@@ -26,17 +26,9 @@ class Customer
       end
     end
   end
-
-  def id
-    @id
-  end
-
+  
   def self.all
     @@customers
-  end
-
-  def name
-    @name
   end
 
   def purchase(product)

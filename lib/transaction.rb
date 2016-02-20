@@ -8,19 +8,7 @@ class Transaction
     @id = @@transactions.count
     decrease_product_stock
   end
-
-  def product
-    @product
-  end
-
-  def customer
-    @customer
-  end
-
-  def id
-    @id
-  end
-
+  
   def self.all
     @@transactions
   end
